@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<title>Thermostat</title>
+<body>
+
+  <section>
+    <h3>Current temperature is: <span id="current-temperature"></span></h3>
+    <form id="select-city">
+      <input id="current-city" type="text" placeholder="Enter a city"></input>
+      <input type="submit"></input>
+    </form>
+  </section>
+<br>
+  <iframe src="https://giphy.com/embed/szLOGdR0gaUMg" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/szLOGdR0gaUMg">via GIPHY</a></p>
+  <br>
+
+<h4 id='temperature'></h4>
+<button type="button" id='temperature-up' class="btn btn-danger">up</button> <br>
+<br>
+<button type="button" id='temperature-down' class="btn btn-primary">down</button> <br>
+<br>
+<button type="button" id='temperature-reset' class="btn btn-warningy">reset</button> <br>
+<br>
+<h4 id='powerSavingMode'>powerSavingMode</h4>
+<button type="button" id='powerSavingMode-On' class="btn btn-success">powerSavingModeOn</button> <br>
+<br>
+<button type="button" id='powerSavingMode-Off' class="btn btn-dark">powerSavingModeOff</button> <br>
+
+ <script src='src/thermostat.js'></script> 
+ 
+ <script src="jquery.js"></script>
+ <script>
+
+   $( document ).ready(function(){
+          var thermostat = new Thermostat();
+          $('#temperature').text(thermostat.temperature);
+            $('#temperature-up').click(function(event){
+          thermostat.up();
+          $('#temperature').text(thermostat.temperature);
+        });
+
+          $('#temperature-down').click(function(event){
+          thermostat.down();
+          $('#temperature').text(thermostat.temperature);
+        });
+
+      
+
+      $('#temperature-reset').click(function(event){
+        thermostat.reset();
+          $('#temperature').text(thermostat.temperature);
+        }); 
+
+      $('#powerSavingMode-On').click(function(event){
+        thermostat.powerSavingModeOn();
+          $('#powerSavingMode').text(thermostat.temperature);
+        }); 
+      }); 
+ </script>
+
+
+
+
+
+</body>
+</html>
+

@@ -1,17 +1,27 @@
+// $('#current-city').change(function() {
+//   var city = $('#current-city').val();
+//   $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=3506e645ac1f87d2f43c8a56152d0dd7&units=metric', function(data) {
+//     $('#current-temperature').text(data.main.temp)
+//   })
+// })
+
+
 class Thermostat {
   constructor(){
     this.MINIMUM = 10
     this.temperature = 20
     this.maxTemperature = 25
-  
+    this.maxTemperatureOn = false
+    this.maxTemperatureOff = true
+
   };
 
   up(){
     this.temperature++;
+   
   };
 
   down(){
-  
     if (this.temperature > this.MINIMUM) {
       this.temperature--;
     }
@@ -19,11 +29,15 @@ class Thermostat {
   };
 
   powerSavingModeOn(){
-    this.maxTemperature = 25
+    if(this.maxTemperatureOn === false) {
+      this.maxTemperature = 25
+    }
   };
 
   powerSavingModeOff(){
-    this.maxTemperature = 32
+    if(this.maxTemperatureOff === true){
+    this.maxTemperature = 32;
+    }
   };
 
   reset(){
@@ -32,9 +46,8 @@ class Thermostat {
 
   energyUsage(){
 
-    if (this.temperature < 18 ){
+    if (this.temperature < 18 ) {
       return 'low-usage'
-
   } else if(this.temperature <= 25) {
      return 'medium-usage'
   } else{
